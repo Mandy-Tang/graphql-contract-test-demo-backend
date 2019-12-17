@@ -5,6 +5,7 @@ import { Controller, Get, Post, Param, Body, Put, Delete, HttpException, HttpSta
 import { Cat } from './cat.interface';
 
 @Controller('cats')
+@UseFilters(HttpExceptionFilter)
 export class CatsController {
 
   constructor(private catService: CatsService) {}
@@ -25,7 +26,6 @@ export class CatsController {
   }
 
   @Put(':id')
-  @UseFilters(HttpExceptionFilter)
   update(@Param('id') id: string, @Body() udpateCatDto: UpdateCatDto): string {
     throw new HttpException('this is a forbidden example', HttpStatus.FORBIDDEN);
   }
