@@ -1,6 +1,6 @@
 import { CatsService } from './cats.service';
 import { CreateCatDto, UpdateCatDto } from './create-cat.dto';
-import { Controller, Get, Post, Param, Body, Put, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Param, Body, Put, Delete, HttpException, HttpStatus } from '@nestjs/common';
 import { Cat } from './cat.interface';
 
 @Controller('cats')
@@ -25,7 +25,7 @@ export class CatsController {
 
   @Put(':id')
   update(@Param('id') id: string, @Body() udpateCatDto: UpdateCatDto): string {
-    return `this action update a cat: ${id} ${udpateCatDto.name}`;
+    throw new HttpException('this is a forbidden example', HttpStatus.FORBIDDEN);
   }
 
   @Delete(':id')
