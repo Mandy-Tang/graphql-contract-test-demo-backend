@@ -1,6 +1,7 @@
+import { HttpExceptionFilter } from './../common/filter/http-exception.filter';
 import { CatsService } from './cats.service';
 import { CreateCatDto, UpdateCatDto } from './create-cat.dto';
-import { Controller, Get, Post, Param, Body, Put, Delete, HttpException, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Post, Param, Body, Put, Delete, HttpException, HttpStatus, UseFilters } from '@nestjs/common';
 import { Cat } from './cat.interface';
 
 @Controller('cats')
@@ -24,6 +25,7 @@ export class CatsController {
   }
 
   @Put(':id')
+  @UseFilters(HttpExceptionFilter)
   update(@Param('id') id: string, @Body() udpateCatDto: UpdateCatDto): string {
     throw new HttpException('this is a forbidden example', HttpStatus.FORBIDDEN);
   }
