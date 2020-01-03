@@ -1,3 +1,4 @@
+import { ResponseFormatInterceptor } from './../common/interceptor/response-format.interceptor';
 import { HttpExceptionFilter } from './../common/filter/http-exception.filter';
 import { CatsService } from './cats.service';
 import { CreateCatDto, UpdateCatDto } from './create-cat.dto';
@@ -9,6 +10,7 @@ import { LoggingInterceptor } from 'src/common/interceptor/logging.interceptor';
 @Controller('cats')
 @UseFilters(HttpExceptionFilter)
 @UseInterceptors(LoggingInterceptor)
+@UseInterceptors(ResponseFormatInterceptor)
 export class CatsController {
 
   constructor(private catService: CatsService) {}
