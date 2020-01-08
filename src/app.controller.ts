@@ -12,7 +12,7 @@ export class AppController {
     return this.authService.login(req.user)
   }
 
-  @UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard())
   @Get('profile')
   async profile(@Request() req) {
     return req.user
