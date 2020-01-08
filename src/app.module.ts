@@ -6,9 +6,24 @@ import { AppService } from './app.service';
 import { CatsModule } from './cats/cats.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  imports: [CatsModule, AuthModule, UsersModule],
+  imports: [
+    CatsModule,
+    AuthModule,
+    UsersModule,
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: 'localhost',
+      port: 3306,
+      username: 'root',
+      password: 'password',
+      database: 'test',
+      entities: [],
+      synchronize: true,
+    })
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
