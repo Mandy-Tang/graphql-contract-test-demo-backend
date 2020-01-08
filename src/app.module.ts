@@ -1,3 +1,4 @@
+import { Photo } from './photo/photo.entity';
 import { CatsController } from './cats/cats.controller';
 import { LoggerMiddleware } from './common/middleware/logger.middleware';
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
@@ -7,6 +8,7 @@ import { CatsModule } from './cats/cats.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { PhotoModule } from './photo/photo.module';
 
 @Module({
   imports: [
@@ -20,9 +22,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       username: 'root',
       password: 'password',
       database: 'test',
-      entities: [],
+      entities: [Photo],
       synchronize: true,
-    })
+    }),
+    PhotoModule
   ],
   controllers: [AppController],
   providers: [AppService],
