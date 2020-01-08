@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { User } from './user';
+import { AuthUser } from './user.model';
 
 
 @Injectable()
 export class UsersService {
-  private users: User[] = [];
+  private users: AuthUser[] = [];
   constructor () {
     this.users = [
       {
@@ -25,7 +25,7 @@ export class UsersService {
     ];
   }
 
-  public async findOne(username: string): Promise<User | undefined> {
+  public async findOne(username: string): Promise<AuthUser | undefined> {
     return this.users.find(user => user.username === username)
   }
 }
