@@ -8,6 +8,7 @@ import { CatsModule } from './cats/cats.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { MongooseModule } from '@nestjs/mongoose';
 import { PhotoModule } from './photo/photo.module';
 
 @Module({
@@ -25,6 +26,7 @@ import { PhotoModule } from './photo/photo.module';
       entities: [Photo],
       synchronize: true,
     }),
+    MongooseModule.forRoot('mongodb://localhost/nest'),
     PhotoModule
   ],
   controllers: [AppController],

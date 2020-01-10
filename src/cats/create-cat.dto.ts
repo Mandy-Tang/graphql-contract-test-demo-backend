@@ -7,7 +7,7 @@ export class CreateCatDto {
   readonly age: number;
 
   @IsString()
-  readonly greed: string;
+  readonly breed: string;
 }
 
 export class UpdateCatDto {
@@ -18,5 +18,5 @@ export class UpdateCatDto {
   readonly age: number;
 
   @IsString()
-  readonly greed: string;
+  readonly breed: string;
 }
