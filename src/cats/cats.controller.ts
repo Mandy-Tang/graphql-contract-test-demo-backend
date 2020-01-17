@@ -4,7 +4,6 @@ import { CatsService } from './cats.service';
 import { CreateCatDto, UpdateCatDto } from './create-cat.dto';
 import { Controller, Get, Post, Param, Body, Put, Delete, HttpException, HttpStatus, UseFilters, UsePipes, UseInterceptors } from '@nestjs/common';
 import { Cat } from './cat.interface';
-import { ValidationPipe } from 'src/common/pipe/validation.pipe';
 import { LoggingInterceptor } from 'src/common/interceptor/logging.interceptor';
 
 @Controller('cats')
@@ -16,7 +15,6 @@ export class CatsController {
   constructor(private catService: CatsService) {}
 
   @Post()
-  @UsePipes(ValidationPipe)
   async create(@Body() createCatDto: CreateCatDto) {
     this.catService.create(createCatDto);
   }
