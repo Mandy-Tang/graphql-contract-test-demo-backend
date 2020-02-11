@@ -9,7 +9,9 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { MongooseModule } from '@nestjs/mongoose';
+import { GraphQLModule } from '@nestjs/graphql';
 import { PhotoModule } from './photo/photo.module';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -27,7 +29,13 @@ import { PhotoModule } from './photo/photo.module';
       synchronize: true,
     }),
     MongooseModule.forRoot('mongodb://localhost/nest'),
-    PhotoModule
+    PhotoModule,
+    GraphQLModule.forRoot({
+      typePaths: ['./**/*.graphql'],
+      definitions: {
+        path: join(process.cwd(), 'src/graphql.ts'),
+      },
+    })
   ],
   controllers: [AppController],
   providers: [AppService],
