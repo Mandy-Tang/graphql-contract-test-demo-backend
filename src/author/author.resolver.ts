@@ -12,13 +12,13 @@ export class AuthorResolver {
     private readonly postService: PostService
   ) {}
 
-  @Query()
-  async author(@Args('id') id: number): Promise<Author> {
+  @Query('author')
+  async getAuthor(@Args('id') id: number): Promise<Author> {
     return this.authorService.findOneById(id);
   }
 
-  @ResolveProperty()
-  async posts(@Parent() author): Promise<Post[]> {
+  @ResolveProperty('posts')
+  async getPosts(@Parent() author): Promise<Post[]> {
     return this.postService.findAll(author.id);
   }
 }
