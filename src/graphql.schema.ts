@@ -12,6 +12,10 @@ export interface Author {
     posts?: Post[];
 }
 
+export interface IMutation {
+    upvotePost(postId: number): Post | Promise<Post>;
+}
+
 export interface Post {
     id: number;
     title: string;

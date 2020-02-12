@@ -27,4 +27,17 @@ export class PostService {
   findAll(authorId: number) {
     return this.posts.filter(post => post.authorId === authorId);
   }
+
+  upvoteById(postId: number) {
+    this.posts = this.posts.map(post => {
+      if (post.id === postId) {
+        return {
+          ...post,
+          votes: post.votes + 1
+        }
+      }
+      return post
+    });
+    return this.posts.find(post => postId === post.id);
+  }
 }

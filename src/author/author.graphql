@@ -2,6 +2,10 @@ type Query {
   author(id: Int!): Author
 }
 
+type Mutation {
+  upvotePost(postId: Int!): Post
+}
+
 type Author {
   id: Int!
   firstName: String
