@@ -9,7 +9,7 @@ export interface Author {
     id: number;
     firstName?: string;
     lastName?: string;
-    post?: Post[];
+    posts?: Post[];
 }
 
 export interface Post {

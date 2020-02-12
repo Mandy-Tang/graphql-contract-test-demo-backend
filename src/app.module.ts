@@ -1,3 +1,4 @@
+import { AuthorModule } from './author/author.module';
 import { Photo } from './photo/photo.entity';
 import { CatsController } from './cats/cats.controller';
 import { LoggerMiddleware } from './common/middleware/logger.middleware';
@@ -35,7 +36,8 @@ import { join } from 'path';
       definitions: {
         path: join(process.cwd(), 'src/graphql.ts'),
       },
-    })
+    }),
+    AuthorModule
   ],
   controllers: [AppController],
   providers: [AppService],

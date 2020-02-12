@@ -6,7 +6,7 @@ type Author {
   id: Int!
   firstName: String
   lastName: String
-  post: [Post]
+  posts: [Post]
 }
 
 type Post {
