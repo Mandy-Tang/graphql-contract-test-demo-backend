@@ -8,7 +8,7 @@ import { LoggingInterceptor } from 'src/common/interceptor/logging.interceptor';
 
 @Controller('cats')
 @UseFilters(HttpExceptionFilter)
-@UseInterceptors(LoggingInterceptor)
+// @UseInterceptors(LoggingInterceptor)
 @UseInterceptors(ResponseFormatInterceptor)
 export class CatsController {
 
@@ -26,6 +26,7 @@ export class CatsController {
 
   @Get()
   async findAll(): Promise<Cat[]> {
+    await new Promise(resolve => setTimeout(resolve, 3000));
     return this.catService.findAll();
   }
 
@@ -38,6 +39,4 @@ export class CatsController {
   delete(@Param('id') id: string): string {
     return `this action delete a cat: ${id}`;
   }
-
-
 }

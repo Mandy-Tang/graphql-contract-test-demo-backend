@@ -14,6 +14,8 @@ export class AuthorResolver {
 
   @Query('author')
   async getAuthor(@Args('id') id: number): Promise<Author> {
+    console.log(`get author @${new Date()}`);
+    await new Promise(resolve => setTimeout(resolve, 3000));
     return this.authorService.findOneById(id);
   }
 
